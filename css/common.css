@@ -7,17 +7,41 @@ header{width: 100%;height: 200px; background-color: blueviolet;}
 #sub .sub_right img{width: 30px;}
 /* 메인 */
 #main{width: 1140px;height: 81px;background-color: burlywood;margin: 0 auto;display: flex;
-flex-direction: row;padding: 15px 0;}
-#main .logo{width: 30%; height: 100%;background-color: cadetblue;}
-#main .logo img{height: 100%;}
-#main .Search{width: 40%; height: 100%; background-color: coral;display: flex;
 flex-direction: row;}
+#main .logo{width: 30%; height: 100%;background-color: cadetblue; padding: 15px 0;}
+    #main .logo img{height: 100%;}
+#main .Search{width: 40%; height: 100%; background-color: coral;display: flex;
+flex-direction: row;padding: 15px 0;}
     #main .Search input{width: 80%; height: 100%;}
     #main .Search button{width: 20%; height: 100%;}
 #main .event{width: 30%;height: 100%; background-color: cornsilk;}
+    #main .event_box{width: 80%;height: 100%; float: right; background-color: darkcyan;
+    position: relative;overflow: hidden;}
+    #main .event_box ul{width: 300%;height: 100%;}
+    #main .event_box li{width: 33.333%;height: 100%;float: left;}
+    #main .event_box a{width: 100%;height: 100%;}
+    #main .event_box a div{width: 100%;height: 100%;background-position: center;
+    background-size: cover;}
+    #main .event_box .event1 div{background-image: url(../img/common/event/event1.jpg);}
+    #main .event_box .event2 div{background-image: url(../img/common/event/event2.jpg);}
+    #main .event_box .event3 div{background-image: url(../img/common/event/event3.jpg);}
+    #main .event_box .arrow{width: 50px;height: 20px;background-color: darkgray;
+    position: absolute;right: 10px;bottom: 10px;}
+    #main .event_box .arrow img{height: 100%;}
 /* 메뉴 */
 #menu{width: 1140px; height: 78px;background-color: cyan;margin: 0 auto;display: flex;
-flex-direction: row;}
-#menu .sub_menu{width: 25%; height: 100%; background-color: darkblue;}
-#menu .telephone{width: 25%; height: 100%; background-color: rgb(0, 139, 97);}
+flex-direction: row;padding: 12px 0;}
+#menu .sub_menu{width: 18%; height: 100%; background-color: rgb(172, 172, 255);
+padding: 15px 0;padding-left: 15px;border: 1px solid #555;}
+    #menu .sub_menu img[alt="menu"]{height: 22px;width: 20px;display: inline-block;
+    margin-bottom: -4px;}
+    #menu .sub_menu p{display: inline-block;font-weight: bold;}
+    #menu .sub_menu img[alt="bottom"]{height: 10px;margin-left: 5px;}
+
+#menu .telephone{width: 30%; height: 100%; background-color: rgb(0, 139, 97);
+padding: 10px 0;padding-left: 30px;}
+    #menu .telephone img{height: 100%;display: inline-block;}
+    #menu .telephone p{height: 100%;display: inline-block;font-size: 14px;}
+    #menu .telephone p strong{font-size: 16px;}
+
 #menu .main_nav{width: 50%; height: 100%; background-color: rgb(139, 0, 76);}
