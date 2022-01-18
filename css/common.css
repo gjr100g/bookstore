@@ -1,0 +1,20 @@
+/* 헤더 */
+header{width: 100%;height: 200px; background-color: blueviolet;}
+/* 서브 */
+#sub{width: 1140px; height: 40.5px;background-color: brown;line-height: 40.5px;margin: 0 auto;}
+#sub .sub_left{float: left;}
+#sub .sub_right{float: right;height: 100%;}
+#sub .sub_right img{width: 30px;}
+/* 메인 */
+#main{width: 1140px;height: 81px;background-color: burlywood;margin: 0 auto;display: flex;
+flex-direction: row;padding: 10px 0;}
+#main .logo{width: 30%; height: 100%;background-color: cadetblue;}
+#main .logo img{height: 100%;}
+#main .Search{width: 40%; height: 100%; background-color: coral;}
+#main .event{width: 30%;height: 100%; background-color: cornsilk;}
+/* 메뉴 */
+#menu{width: 1140px; height: 78px;background-color: cyan;margin: 0 auto;display: flex;
+flex-direction: row;}
+#menu .sub_menu{width: 25%; height: 100%; background-color: darkblue;}
+#menu .telephone{width: 25%; height: 100%; background-color: rgb(0, 139, 97);}
+#menu .main_nav{width: 50%; height: 100%; background-color: rgb(139, 0, 76);}
