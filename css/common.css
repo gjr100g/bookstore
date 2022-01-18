@@ -7,10 +7,13 @@ header{width: 100%;height: 200px; background-color: blueviolet;}
 #sub .sub_right img{width: 30px;}
 /* 메인 */
 #main{width: 1140px;height: 81px;background-color: burlywood;margin: 0 auto;display: flex;
-flex-direction: row;padding: 10px 0;}
+flex-direction: row;padding: 15px 0;}
 #main .logo{width: 30%; height: 100%;background-color: cadetblue;}
 #main .logo img{height: 100%;}
-#main .Search{width: 40%; height: 100%; background-color: coral;}
+#main .Search{width: 40%; height: 100%; background-color: coral;display: flex;
+flex-direction: row;}
+    #main .Search input{width: 80%; height: 100%;}
+    #main .Search button{width: 20%; height: 100%;}
 #main .event{width: 30%;height: 100%; background-color: cornsilk;}
 /* 메뉴 */
 #menu{width: 1140px; height: 78px;background-color: cyan;margin: 0 auto;display: flex;
