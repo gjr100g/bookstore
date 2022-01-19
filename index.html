@@ -7,6 +7,51 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#menu .main_nav .main_li a').mouseover(function(){
+                $(this).siblings('.sub_ul').stop().show();
+            });
+            $('#menu .main_nav .main_li a').mouseout(function(){
+                $(this).siblings('.sub_ul').stop().hide();
+            });
+            $('.sub_ul').mouseover(function(){
+                $(this).show();
+            });
+            $('.sub_ul').mouseout(function(){
+                $('.sub_ul').hide();
+            });
+        });
+
+
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: { query: "경제" },
+                headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+            })
+                .done(function (msg) {
+
+                    var divs = document.getElementsByClassName('topic_box');
+
+                    for (var i = 0; i < divs.length; i++) {
+
+                        var str = msg.documents[i].title;
+                        var str2 = str.substring(0,30);
+
+                        $(".topic_box").eq(i).append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                        $(".topic_box").eq(i).append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                        $(".topic_box").eq(i).append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                        $(".topic_box").eq(i).append('<a href="#">' + "<span>" + msg.documents[i].price +"원" + "</span>" + '</a>');
+                        $(".topic_box").eq(i).append('<a href="#">' + "<span>" + '20%' + "</span>" + '</a>');
+
+
+
+                    }
+                });
+    </script>
 </head>
 <body>
     <header>
@@ -33,7 +78,7 @@
                 </a>
             </div>
             <div class="Search">
-                <input type="text" placeholder="검색해보세요.">
+                <input type="text" placeholder="검색해보세요.....">
                 <button></button>
             </div>
             <div class="event">
@@ -70,7 +115,7 @@
             </div>
             <div class="telephone">
                 <img src="img/common/해드셋.png" alt="">
-                <p>고객센터 오전 9시 ~ 오후 6시<br>
+                <p>오전 9시 ~ 오후 6시(평일)<br>
                     <strong>1544-1900</strong>
                 </p>
             </div>
@@ -132,5 +177,57 @@
         </div>
 
     </header>
+    <!-- 슬리더   //////////////// -->
+    <div id="slider">
+        <ul>
+            <li class="slider1"></li>
+            <li class="slider2"></li>
+        </ul>
+        <div class="back"></div>
+        <div class="text">
+
+        </div>
+    </div>
+
+    <!-- 카테고리   ///////////////-->
+    <div id="category">
+        <div class="category_left">
+            <a href="#" class="category1"></a>
+        </div>
+        <div class="category_right">
+            <a href="#" class="category2"></a>
+            <a href="#" class="category3"></a>
+            <a href="#" class="category4"></a>
+            <a href="#" class="category5"></a>
+        </div>
+    </div>
+
+    <!-- 화제의 신작   ////////// -->
+    <div id="topic">
+        <div class="topic_title">
+            <h2>화제의 신작</h2>
+        </div>
+        <div class="topic_in">
+            <div class="topic_collection">
+                <ul>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                    <li class="topic_box"></li>
+                </ul>
+            </div>
+            <div class="topic_button">
+                <div>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
