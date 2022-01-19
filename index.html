@@ -25,7 +25,7 @@
             });
         });
 
-
+        // 화제 도서
             $.ajax({
                 method: "GET",
                 url: "https://dapi.kakao.com/v3/search/book?target=title",
@@ -44,13 +44,100 @@
                         $(".topic_box").eq(i).append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
                         $(".topic_box").eq(i).append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
                         $(".topic_box").eq(i).append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
-                        $(".topic_box").eq(i).append('<a href="#">' + "<span>" + msg.documents[i].price +"원" + "</span>" + '</a>');
-                        $(".topic_box").eq(i).append('<a href="#">' + "<span>" + '20%' + "</span>" + '</a>');
+                        $(".topic_box").eq(i).append("<span>" + msg.documents[i].price +"원" + "</span>");
+                        $(".topic_box").eq(i).append("<span>" + '20%' + "</span>");
 
 
 
                     }
                 });
+
+
+        // 아동 도서
+
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: { query: "아동" },
+                headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+            })
+                .done(function (msg) {
+
+                    var divs = document.getElementsByClassName('child_box');
+
+                    for (var i = 0; i < divs.length; i++) {
+
+                        var str = msg.documents[i].title;
+                        var str2 = str.substring(0, 30);
+
+                        $(".child_box").eq(i).append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                        $(".child_box").eq(i).append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                        $(".child_box").eq(i).append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                        $(".child_box").eq(i).append("<span>" + msg.documents[i].price + "원" + "</span>");
+                        $(".child_box").eq(i).append("<span>" + '20%' + "</span>");
+
+
+
+                    }
+                });
+
+
+            // 취업/수험서
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "취업" },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
+
+                var divs = document.getElementsByClassName('test_box');
+
+                for (var i = 0; i < divs.length; i++) {
+
+                    var str = msg.documents[i].title;
+                    var str2 = str.substring(0, 30);
+
+                    $(".test_box").eq(i).append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                    $(".test_box").eq(i).append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                    $(".test_box").eq(i).append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                    $(".test_box").eq(i).append("<span>" + msg.documents[i].price + "원" + "</span>");
+                    $(".test_box").eq(i).append("<span>" + '20%' + "</span>");
+
+
+
+                }
+            });
+
+
+
+
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "문구" },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
+
+                var divs = document.getElementsByClassName('best_box');
+
+                for (var i = 0; i < divs.length; i++) {
+
+                    var str = msg.documents[i].title;
+                    var str2 = str.substring(0, 30);
+
+                    $(".best_box").eq(i).children('.best_box-left').append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                    $(".best_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                    $(".best_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].sale_price + "원" + "</span>");
+                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].price + "원" + "</span>");
+                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
+
+
+
+                }
+            });
     </script>
 </head>
 <body>
@@ -221,9 +308,198 @@
             </div>
             <div class="topic_button">
                 <div>
+                    <button class="click"></button>
                     <button></button>
                     <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 아동도서    ////////////-->
+    <div id="child">
+        <div class="child_title">
+            <h2>아동도서</h2>
+        </div>
+        <div class="child_in">
+            <div class="child_collection">
+                <ul>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                    <li class="child_box"></li>
+                </ul>
+            </div>
+            <div class="child_button">
+                <div>
+                    <button class="click"></button>
                     <button></button>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 취업/수험서   /////////////// -->
+    <div id="test">
+        <div class="test_title">
+            <h2>취업/수험서</h2>
+        </div>
+        <div class="test_in">
+            <div class="test_collection">
+                <ul>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                    <li class="test_box"></li>
+                </ul>
+            </div>
+            <div class="test_button">
+                <div>
+                    <button class="click"></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 온리 교보문구 -->
+    <div id="only">
+        <button><img src="img/main/icon/왼쪽.png" alt=""></button>
+        <button><img src="img/main/icon/오른쪽.png" alt=""></button>
+        <div class="only_in">
+            <ul>
+                <li>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only2.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only3.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only4.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only5.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only6.gif" alt="">
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="onli_box">
+                        <a href="#">
+                            <img src="img/main/only/only1.gif" alt="">
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 광고   //////////////-->
+    <div id="Advertisement">
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+
+    <!-- 베스트  ///////////-->
+    <div id="best_outside">
+        <div id="best">
+            <div class="best_week">
+
+            </div>
+            <div class="best_in">
+                <div class="best_title">
+                    <div class="title1"><h4>교보문구총합</h4></div>
+                    <div class="title2"><h4>인터넷일간</h4></div>
+                    <div class="title3"><h4>외국도서</h4></div>
+                </div>
+                <div class="best_box_in">
+                    <div class="Kyobo best_box_in1">
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                        <div class="Kyobo_box best_box">
+                            <div class="best_box-left"></div>
+                            <div class="best_box-right"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
