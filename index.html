@@ -120,26 +120,80 @@
         })
             .done(function (msg) {
 
-                var divs = document.getElementsByClassName('best_box');
+                var divs = document.getElementsByClassName('Kyobo_box');
 
                 for (var i = 0; i < divs.length; i++) {
 
                     var str = msg.documents[i].title;
                     var str2 = str.substring(0, 30);
 
-                    $(".best_box").eq(i).children('.best_box-left').append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
-                    $(".best_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
-                    $(".best_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
-                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].sale_price + "원" + "</span>");
-                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].price + "원" + "</span>");
-                    $(".best_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
+                    $(".Kyobo_box").eq(i).children('.best_box-left').append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                    $(".Kyobo_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                    $(".Kyobo_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                    $(".Kyobo_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].sale_price + "원" + "</span>");
+                    $(".Kyobo_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].price + "원" + "</span>");
+                    $(".Kyobo_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
 
 
 
                 }
             });
 
+        // 인터넷 총합
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "인터넷" },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
 
+                var divs = document.getElementsByClassName('Internet_box');
+
+                for (var i = 0; i < divs.length; i++) {
+
+                    var str = msg.documents[i].title;
+                    var str2 = str.substring(0, 30);
+
+                    $(".Internet_box").eq(i).children('.best_box-left').append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                    $(".Internet_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                    $(".Internet_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                    $(".Internet_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].sale_price + "원" + "</span>");
+                    $(".Internet_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].price + "원" + "</span>");
+                    $(".Internet_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
+
+
+
+                }
+            });
+
+        // 외국도서
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "ab" },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
+
+                var divs = document.getElementsByClassName('Foreign_box');
+
+                for (var i = 0; i < divs.length; i++) {
+
+                    var str = msg.documents[i].title;
+                    var str2 = str.substring(0, 30);
+
+                    $(".Foreign_box").eq(i).children('.best_box-left').append('<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>');
+                    $(".Foreign_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>');
+                    $(".Foreign_box").eq(i).children('.best_box-right').append('<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>');
+                    $(".Foreign_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].sale_price + "원" + "</span>");
+                    $(".Foreign_box").eq(i).children('.best_box-right').append("<span>" + msg.documents[i].price + "원" + "</span>");
+                    $(".Foreign_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
+
+
+
+                }
+            });
 
 
 
@@ -159,7 +213,7 @@
                     var str = msg.documents[i].title;
                     var str2 = str.substring(0, 30);
                     var con = msg.documents[i].contents;
-                    var con2 = con.substring(0, 100);
+                    var con2 = con.substring(0, 87);
 
                     $(".week-box").eq(i).append('<div>'+'<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>'+'</div>');
                     $(".week-box").eq(i).append('<div>'+'<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>'+'</div>');
@@ -169,14 +223,141 @@
 
                 }
             });
+
+
+
+
+
+
+
+
+        // 화제
+        $(function(){
+            $('.topic_button button:nth-of-type(1)').click(function(){
+                $('.topic_collection ul').animate({'marginLeft':'0px'});
+                $(this).addClass('click');
+                $('.topic_button button').not(this).removeClass('click');
+            });
+            $('.topic_button button:nth-of-type(2)').click(function(){
+                $('.topic_collection ul').animate({'marginLeft':'-222.06px'});
+                $(this).addClass('click');
+                $('.topic_button button').not(this).removeClass('click');
+            });
+            $('.topic_button button:nth-of-type(3)').click(function(){
+                $('.topic_collection ul').animate({'marginLeft':'-444.12px'});
+                $(this).addClass('click');
+                $('.topic_button button').not(this).removeClass('click');
+            });
+        });
+        // 아동
+        $(function(){
+            $('.child_button button:nth-of-type(1)').click(function(){
+                $('.child_collection ul').animate({'marginLeft':'0px'});
+                $(this).addClass('click');
+                $('.child_button button').not(this).removeClass('click');
+            });
+            $('.child_button button:nth-of-type(2)').click(function(){
+                $('.child_collection ul').animate({'marginLeft':'-222.06px'});
+                $(this).addClass('click');
+                $('.child_button button').not(this).removeClass('click');
+            });
+            $('.child_button button:nth-of-type(3)').click(function(){
+                $('.child_collection ul').animate({'marginLeft':'-444.12px'});
+                $(this).addClass('click');
+                $('.child_button button').not(this).removeClass('click');
+            });
+        });
+        // 취업/수험서
+        $(function(){
+            $('.test_button button:nth-of-type(1)').click(function(){
+                $('.test_collection ul').animate({'marginLeft':'0px'});
+                $(this).addClass('click');
+                $('.test_button button').not(this).removeClass('click');
+            });
+            $('.test_button button:nth-of-type(2)').click(function(){
+                $('.test_collection ul').animate({'marginLeft':'-222.06px'});
+                $(this).addClass('click');
+                $('.test_button button').not(this).removeClass('click');
+            });
+            $('.test_button button:nth-of-type(3)').click(function(){
+                $('.test_collection ul').animate({'marginLeft':'-444.12px'});
+                $(this).addClass('click');
+                $('.test_button button').not(this).removeClass('click');
+            });
+        });
+
+        // 베스트 3가지
+        $(function(){
+            $('.best_title .title1').click(function(){
+                $('.Kyobo_box_ins1').stop().fadeIn();
+                $('.best_box_ins').not('.Kyobo_box_ins1').stop().hide()
+                $(this).addClass('title-click');
+                $('.best_title .title').not(this).removeClass('title-click');
+            });
+            $('.best_title .title2').click(function(){
+                $('.Internet_box_ins2').stop().fadeIn();
+                $('.best_box_ins').not('.Internet_box_ins2').stop().hide()
+                $(this).addClass('title-click');
+                $('.best_title .title').not(this).removeClass('title-click');
+            });
+            $('.best_title .title3').click(function(){
+                $('.Foreign_box_ins3').stop().fadeIn();
+                $('.best_box_ins').not('.Foreign_box_ins3').stop().hide()
+                $(this).addClass('title-click');
+                $('.best_title .title').not(this).removeClass('title-click');
+            });
+        });
+        // 이주의 베스트
+        $(function(){
+            $('.best_week-button button:nth-of-type(1)').click(function(){
+                $(this).addClass('click');
+                $('.best_week-button button').not(this).removeClass('click');
+                $('.week-box1').fadeIn();
+                $('.week-box').not('.week-box1').hide();
+            });
+            $('.best_week-button button:nth-of-type(2)').click(function(){
+                $(this).addClass('click');
+                $('.best_week-button button').not(this).removeClass('click');
+                $('.week-box2').fadeIn();
+                $('.week-box').not('.week-box2').hide();
+            });
+            $('.best_week-button button:nth-of-type(3)').click(function(){
+                $(this).addClass('click');
+                $('.best_week-button button').not(this).removeClass('click');
+                $('.week-box3').fadeIn();
+                $('.week-box').not('.week-box3').hide();
+            });
+            $('.best_week-button button:nth-of-type(4)').click(function(){
+                $(this).addClass('click');
+                $('.best_week-button button').not(this).removeClass('click');
+                $('.week-box4').fadeIn();
+                $('.week-box').not('.week-box4').hide();
+            });
+        });
+
+        // 온리 교보
+        $(function(){
+            $('#only button:nth-of-type(1)').click(function(){
+                $('.only_in ul li:last').prependTo('.only_in ul');
+                $('.only_in ul').css({'marginLeft':'-100%'});
+                $('.only_in ul').stop().animate({'marginLeft':'0px'});
+            });
+            $('#only button:nth-of-type(2)').click(function(){
+                $('.only_in ul').stop().animate({'marginLeft':'-100%'},function(){
+                    $('.only_in ul li:first').appendTo('.only_in ul');
+                    $('.only_in ul').css({marginLeft:0});
+                });
+            });
+        });
     </script>
 </head>
 <body>
+    <!-- 해더  /////////////////// -->
     <header>
         <div id="sub">
             <div class="sub_left">
-                <a href="#">매장안내 ▽</a>
-                <a href="#">회원해택 ▽</a>
+                <a href="#">매장안내 <img src="img/common/아래.png" alt=""></a>
+                <a href="#">회원해택 <img src="img/common/아래.png" alt=""></a>
                 <a href="#">Prestige Lounge</a>
             </div>
             <div class="sub_right">
@@ -197,7 +378,7 @@
             </div>
             <div class="Search">
                 <input type="text" placeholder="검색해보세요.....">
-                <button></button>
+                <button>검색</button>
             </div>
             <div class="event">
                 <div class="event_box">
@@ -298,7 +479,11 @@
     <!-- 슬리더   //////////////// -->
     <div id="slider">
         <ul>
-            <li class="slider1"></li>
+            <li class="slider1">
+                <div class="slider_text">
+                    
+                </div>
+            </li>
             <li class="slider2"></li>
         </ul>
         <div class="back"></div>
@@ -412,64 +597,64 @@
                 <li>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only1.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only2.gif" alt="">
+                            <img src="img/main/only/only2.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only3.gif" alt="">
+                            <img src="img/main/only/only3.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only4.gif" alt="">
+                            <img src="img/main/only/only4.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only5.gif" alt="">
+                            <img src="img/main/only/only5.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only6.gif" alt="">
+                            <img src="img/main/only/only6.png" alt="">
                         </a>
                     </div>
                 </li>
                 <li>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only7.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only8.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only9.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only10.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only11.png" alt="">
                         </a>
                     </div>
                     <div class="onli_box">
                         <a href="#">
-                            <img src="img/main/only/only1.gif" alt="">
+                            <img src="img/main/only/only12.png" alt="">
                         </a>
                     </div>
                 </li>
@@ -502,49 +687,127 @@
                     <button></button>
                     <button></button>
                     <button></button>
-                    <button></button>
                 </div>
             </div>
             <div class="best_in">
                 <div class="best_title">
-                    <div class="title1 title-click"><h4>교보문구총합</h4></div>
-                    <div class="title2"><h4>인터넷일간</h4></div>
-                    <div class="title3"><h4>외국도서</h4></div>
+                    <div class="title title1 title-click"><h4>교보문구총합</h4></div>
+                    <div class="title title2"><h4>인터넷일간</h4></div>
+                    <div class="title title3"><h4>외국도서</h4></div>
                 </div>
                 <div class="best_box_in">
-                    <div class="Kyobo best_box_in1">
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
+                    <!-- 교보문구총합 -->
+                    <div class="best_box_ins Kyobo_box_ins1">
+                        <div class="best_box_in1 Kyobo">
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Kyobo_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
                         </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
+                    </div>
+
+                    <!-- 인터넷일간 -->
+                    <div class="best_box_ins Internet_box_ins2">
+                        <div class="best_box_in1 Internet">
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Internet_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
                         </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
-                        <div class="Kyobo_box best_box">
-                            <div class="best_box-left"></div>
-                            <div class="best_box-right"></div>
-                        </div>
+                    </div>
+
+                    <!-- 외국도서 -->
+                    <div class="best_box_ins Foreign_box_ins3">
+                        <div class="best_box_in1 Foreign">
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                            <div class="Foreign_box best_box">
+                                <div class="best_box-left"></div>
+                                <div class="best_box-right"></div>
+                            </div>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -599,7 +862,10 @@
         </div>
 
         <div class="footer_sub">
-            <p>COPYRIGHT(C) KYOBO BOOK CENTRE ALL RIGHTS RESERVED.</p>
+            <div class="footer_sub_box">
+                <p>고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰에서 가입한 LG유플러스의 구매안전서비스를 이용하실 수 있습니다.</p>
+                <p>COPYRIGHT(C) KYOBO BOOK CENTRE ALL RIGHTS RESERVED.</p>
+            </div>
         </div>
     </footer>
 </body>
