@@ -111,7 +111,7 @@
 
 
 
-
+        // 추천 교육
         $.ajax({
             method: "GET",
             url: "https://dapi.kakao.com/v3/search/book?target=title",
@@ -135,6 +135,37 @@
                     $(".best_box").eq(i).children('.best_box-right').append("<span>" + '20%' + "</span>");
 
 
+
+                }
+            });
+
+
+
+
+
+        // 이주의 베스트
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: "이주" },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
+
+                var divs = document.getElementsByClassName('week-box');
+
+                for (var i = 0; i < divs.length; i++) {
+
+                    var str = msg.documents[i].title;
+                    var str2 = str.substring(0, 30);
+                    var con = msg.documents[i].contents;
+                    var con2 = con.substring(0, 100);
+
+                    $(".week-box").eq(i).append('<div>'+'<a href="#">' + "<h6>" + msg.documents[i].authors + "</h6>" + '</a>'+'</div>');
+                    $(".week-box").eq(i).append('<div>'+'<a href="#">' + "<h3>" + str2 + "</h3>" + '</a>'+'</div>');
+                    $(".week-box").eq(i).append('<div>'+'<a href="#">' + "<img src='" + msg.documents[i].thumbnail + "'/>" + '</a>'+'</div>');
+                    $(".week-box").eq(i).append('<div>'+"<span>" + msg.documents[i].sale_price + "원" + "</span>"+"<span>" + msg.documents[i].price + "원" + "</span>"+"<span>" + '20%' + "</span>"+'</div>');
+                    $(".week-box").eq(i).append('<div>'+con2+'</div>')
 
                 }
             });
@@ -457,11 +488,26 @@
     <div id="best_outside">
         <div id="best">
             <div class="best_week">
-
+                <div class="best_week-title">
+                    <h3>이 주의 베스트</h3>
+                </div>
+                <div class="best_week-box">
+                    <div class="week-box week-box1"></div>
+                    <div class="week-box week-box2"></div>
+                    <div class="week-box week-box3"></div>
+                    <div class="week-box week-box4"></div>
+                </div>
+                <div class="best_week-button">
+                    <button class="click"></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
             </div>
             <div class="best_in">
                 <div class="best_title">
-                    <div class="title1"><h4>교보문구총합</h4></div>
+                    <div class="title1 title-click"><h4>교보문구총합</h4></div>
                     <div class="title2"><h4>인터넷일간</h4></div>
                     <div class="title3"><h4>외국도서</h4></div>
                 </div>
@@ -505,5 +551,56 @@
         </div>
     </div>
 
+
+    <!-- 푸터  //////////////// -->
+    <footer>
+        <div class="footer_main">
+            <div class="information">
+                <a href="index.html">
+                    <img src="img/common/로고.png" alt="logo">
+                </a>
+                
+                <p><strong><span>(주)</span>교보문구</strong> : 서울시 종로구 종로 1</p>
+                <p><strong>사업자등록번호</strong> : 102-81-11670</p>
+                <p><strong>대표전화</strong> : 1544-1900 (발신자 부담전화)</p>
+                <p><strong>팩스</strong> : 0502-987-5711 (지역번호 공통)</p>
+            </div>
+    
+            <div class="footer_nav">
+                <ul>
+                    <li>회원혜택</li>
+                    <li><a href="#">Prestige Lounge</a></li>
+                    <li><a href="#">신규회원 혜택</a></li>
+                    <li><a href="#">등급별 혜택</a></li>
+                    <li><a href="#">출석체크</a></li>
+                    <li><a href="#">참좋은 교보문고</a></li>
+                </ul>
+                <ul>
+                    <li>빠른 서비스</li>
+                    <li><a href="#">북클럽카드 등록</a></li>
+                    <li><a href="#">영수증 후 적립</a></li>
+                    <li><a href="#">교보캐시 조회.충전</a></li>
+                    <li><a href="#">기프트카드 조회.충전</a></li>
+                    <li><a href="#">미이용회원 조회.복원</a></li>
+                </ul>
+            </div>
+            <div class="News">
+                <p>뉴스레터 검색</p>
+                <input type="text" placeholder="검색해보세요...">
+                <button>검색</button>
+                <p>교보문고 소식</p>
+                <div class="sns">
+                    <a href="#"><img src="img/common/sns1.png" alt=""></a>
+                    <a href="#"><img src="img/common/sns2.png" alt=""></a>
+                    <a href="#"><img src="img/common/sns3.png" alt=""></a>
+                    <a href="#"><img src="img/common/sns4.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_sub">
+            <p>COPYRIGHT(C) KYOBO BOOK CENTRE ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
 </body>
 </html>
