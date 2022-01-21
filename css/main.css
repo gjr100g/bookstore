@@ -11,9 +11,9 @@
         .slider1_text{top: 160px;left: 50%;}
         .slider2_text{top: 160px;right: 50%;}
         .slider_text{width:auto;height:auto;position: absolute;color: white;text-align: center;}
-        .slider_text h2{font-size: 43px;margin-bottom: 10px;}
-        .slider_text h3{font-size: 33px;}
-        .slider_text a{margin-top: 30px;}
+        .slider_text h2{font-size: 43px;margin-bottom: 10px;font-family: 'NanumSquare';}
+        .slider_text h3{font-size: 33px;font-family: 'NanumSquare';}
+        .slider_text a{margin-top: 30px;font-family: 'NanumSquare';}
         .slider_text span{display: inline-block;width: 150px;height: 55px;background-color: rgb(228, 194, 0);
         margin-top: 30px;border-radius: 5px;line-height: 55px;color: #222;font-size: 14px;
     font-weight: bold;}
