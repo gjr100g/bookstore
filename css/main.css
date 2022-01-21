@@ -1,4 +1,4 @@
-
+*{font-family:'NanumSquare';;}
 
 /* 슬리더   /////////////////////// */
 #slider{width: 100%;height: 595px; overflow: hidden;position: relative;background-color: black;}
