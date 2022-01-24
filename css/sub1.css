@@ -1,0 +1,34 @@
+#web{width: 1140px;height: auto; margin: 0 auto;margin-top: 20px;}
+#product{width: 100%;height: auto;}
+#product .Route{width: 100%;height: 64.5px;}
+/* 제품박스 */
+#product .product_box{width: 100%;height: 640px;display: flex;flex-direction: row;justify-content: space-between;}
+    #product .product_box .product_photo{width: 45%;height: 100%;}
+    #product .product_box .product_photo .main_photo{width: 100%;height: 70%;}
+    #product .product_box .product_photo .slate_photo{width: 100%;height: 30%;}
+    #product .product_box .brief_information{width: 55%;height: 100%;}
+
+    .main_photo{position: relative;}
+    .main_photo img{height: 100%;position: absolute; top: 0;left: 50%; transform: translateX(-50%);box-shadow: 5px 5px 20px 2px gray;}
+
+    .book_Tags{font-size: 13px;}
+    .book_title{font-size: 18px;margin: 10px 0;}
+    .book_information{font-size: 14px;}
+    .book_information p{margin: 3px 0;}
+    .book_information p span{color: #62ab00;text-decoration: none;font-size: 14px;}
+    .book_information h4{display: inline-block; font-size: 18px;margin: 15px 0;margin-right: 7px;color: #62ab00;}
+    .book_information span{display: inline-block; font-size: 14px;color: #999;text-decoration: line-through;}
+    .book_ranking{font-size: 14px;}
+    .star img{width: 16px;}
+    .book_subtotal{margin: 20px 0;line-height: 22px;font-size: 14px;}
+
+    .book_ranking{margin: 10px 0;}
+
+    .purchase{height: auto; margin: 15px 0;}
+    .purchase span{height: 50px;padding: 0 30px; border: 2px solid #62ab00;border-radius: 5px;font-weight: bold;font-size: 16px;display: inline-block;
+    line-height: 50px; transition: 0.4s;}
+    .purchase span:hover{background-color: #62ab00; color: white;}
+
+    .sub_purchase{margin: 10px 0;font-size: 14px;}
+    .sub_purchase img{width: 15px;margin-right: 5px;}
+    .sub_purchase a{margin-right: 15px;}

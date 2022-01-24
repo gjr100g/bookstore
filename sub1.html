@@ -5,17 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/sub1.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/main_api.js"></script>
     <!-- 네이버폰트 주소 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+    <script>
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            data: { query: ('재미') },
+            headers: { Authorization: "KakaoAK 990fde994483119ca87dc4ba94a7616b" }
+        })
+            .done(function (msg) {
+
+                    var dat = msg.documents[0].datetime;
+                    var dat2 = dat.substring(0,10);
+                    var con = msg.documents[0].contents;
+                    var con2 = con.substring(0,100);
+
+
+                    $(".main_photo").append("<img src='" + msg.documents[0].thumbnail + "'/>");
+                    $(".book_title").append("<h2>"+ msg.documents[0].title +"</h2>");
+                    $(".book_information").append("<p>"+"도서 출판날짜 : "+"<span>"+ dat2 +"</span>"+"</p>");
+                    $(".book_information").append("<p>"+"도서 출판사 : "+"<span>"+ msg.documents[0].publisher +"</span>"+"</p>");
+                    $(".book_information").append("<p>"+"도서 저자 : "+"<span>"+ msg.documents[0].authors +"</span>"+"</p>");
+                    $(".book_information").append("<p>"+"도서 번역자 리스트 : "+"<span>"+ msg.documents[0].translators +"</span>"+"</p>");
+                    $(".book_information").append("<p>"+"도서 판매 상태 정보 : "+"<span>"+ msg.documents[0].status +"</span>"+"</p>");
+                    $(".book_information").append("<h4>"+ msg.documents[0].sale_price +"원"+"</h4>");
+                    $(".book_information").append("<span>"+ msg.documents[0].price +"원"+"</span>");
+                    $(".book_subtotal").append("<p>"+"도서 출판사 : "+ con2 +"</p>");
+            });
+    </script>
 </head>
 <body>
+
     <!-- 해더  /////////////////// -->
     <header>
         <!-- 서브///// -->
@@ -602,365 +628,59 @@
         </div>
 
     </header>
-    <!-- 슬리더   //////////////// -->
-    <div id="slider">
-        <ul>
-            <li class="slider1">
-                <div class="slider1_photo"></div>
-                <div class="slider1_text slider_text">
-                    <h2>독서 P.T 완독 챌린지</h2>
-                    <h3>
-                        교보문구가 독서 트레이드가 되어<br>
-                        3개월간 관리해주는 서비스!
-                    </h3>
-                    <a href="#">
-                        <span>
-                            자세히보기..
+    <span></span>
+    <div id="web">
+        <!-- 제품 -->
+        <div id="product">
+            <!-- 경로 -->
+            <div class="Route"><p>홈 > 제품상세보기</p></div>
+            <!-- 제품박스 -->
+            <div class="product_box">
+                <!-- 제품사진 -->
+                <div class="product_photo">
+                    <div class="main_photo"></div>
+                    <div class="slate_photo">
+
+                    </div>
+                </div>
+                <!-- 간단 정보 -->
+                <div class="brief_information">
+                    <div class="book_Tags">
+                        <p>태그 : 국내도서 주간베스트 1위 | 정치/사회 주간베스트 1위</p>
+                    </div>
+                    <div class="book_title"></div>
+                    <div class="book_information"></div>
+                    <div class="book_ranking">
+                        <span class="star">
+                            <img src="img/sub1/별.png" alt="">
+                            <img src="img/sub1/별.png" alt="">
+                            <img src="img/sub1/별.png" alt="">
+                            <img src="img/sub1/별.png" alt="">
+                            <img src="img/sub1/별.png" alt="">
                         </span>
-                    </a>
-
-                </div>
-            </li>
-            <li class="slider2">
-                <div class="slider2_photo"></div>
-                <div class="slider2_text slider_text">
-                    <h2>2022년 소원의 벽</h2>
-                    <h3>
-                        직접 새해 소망을 적고 소원의<br>
-                        벽에 붙여주세요!
-                    </h3>
-                    <a href="#">
-                        <span>
-                            자세히보기..
-                        </span>
-                    </a>
-
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <!-- 카테고리   ///////////////-->
-    <div id="category">
-        <div class="category_left">
-            <a href="#" class="category1"></a>
-        </div>
-        <div class="category_right">
-            <a href="#" class="category2"></a>
-            <a href="#" class="category3"></a>
-            <a href="#" class="category4"></a>
-            <a href="#" class="category5"></a>
-        </div>
-    </div>
-
-    <!-- 화제의 신작   ////////// -->
-    <div id="topic">
-        <div class="topic_title">
-            <h2>화제의 신작</h2>
-        </div>
-        <div class="topic_in">
-            <div class="topic_collection">
-                <ul>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                    <li class="topic_box"></li>
-                </ul>
-            </div>
-            <div class="topic_button">
-                <div>
-                    <button class="click"></button>
-                    <button></button>
-                    <button></button>
+                        <span>(리뷰 117개)</span>
+                    </div>
+                    <div class="book_subtotal"></div>
+                    <div class="purchase">
+                        <a href="#"><span>장바구니</span></a>
+                        <a href="#"><span>바로구매</span></a>
+                    </div>
+                    <div class="sub_purchase">
+                        <a href="#"><span><img src="img/sub1/하트.png" alt="">찜 등록하기</span></a>
+                        <a href="#"><span><img src="img/sub1/책.png" alt="">출간알림신청</span></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- 상세정보 -->
+        <div id="maininformation">
+            <div class="subtotal">
 
-    <!-- 아동도서    ////////////-->
-    <div id="child">
-        <div class="child_title">
-            <h2>아동도서</h2>
-        </div>
-        <div class="child_in">
-            <div class="child_collection">
-                <ul>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                    <li class="child_box"></li>
-                </ul>
-            </div>
-            <div class="child_button">
-                <div>
-                    <button class="click"></button>
-                    <button></button>
-                    <button></button>
-                </div>
             </div>
         </div>
     </div>
 
 
-    <!-- 취업/수험서   /////////////// -->
-    <div id="test">
-        <div class="test_title">
-            <h2>취업/수험서</h2>
-        </div>
-        <div class="test_in">
-            <div class="test_collection">
-                <ul>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                    <li class="test_box"></li>
-                </ul>
-            </div>
-            <div class="test_button">
-                <div>
-                    <button class="click"></button>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 온리 교보문구 -->
-    <div id="only">
-        <button><img src="img/main/icon/왼쪽.png" alt=""></button>
-        <button><img src="img/main/icon/오른쪽.png" alt=""></button>
-        <div class="only_in">
-            <ul>
-                <li>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only1.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only2.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only3.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only4.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only5.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only6.png" alt="">
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only7.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only8.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only9.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only10.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only11.png" alt="">
-                        </a>
-                    </div>
-                    <div class="onli_box">
-                        <a href="#">
-                            <img src="img/main/only/only12.png" alt="">
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    <!-- 광고   //////////////-->
-    <div id="Advertisement">
-        <a href="#"></a>
-        <a href="#"></a>
-    </div>
-
-    <!-- 베스트  ///////////-->
-    <div id="best_outside">
-        <div id="best">
-            <div class="best_week">
-                <div class="best_week-title">
-                    <h3>이 주의 베스트</h3>
-                </div>
-                <div class="best_week-box">
-                    <div class="week-box week-box1"></div>
-                    <div class="week-box week-box2"></div>
-                    <div class="week-box week-box3"></div>
-                    <div class="week-box week-box4"></div>
-                </div>
-                <div class="best_week-button">
-                    <button class="click"></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="best_in">
-                <div class="best_title">
-                    <div class="title title1 title-click"><h4>교보문구총합</h4></div>
-                    <div class="title title2"><h4>인터넷일간</h4></div>
-                    <div class="title title3"><h4>외국도서</h4></div>
-                </div>
-                <div class="best_box_in">
-                    <!-- 교보문구총합 -->
-                    <div class="best_box_ins Kyobo_box_ins1">
-                        <div class="best_box_in1 Kyobo">
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Kyobo_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 인터넷일간 -->
-                    <div class="best_box_ins Internet_box_ins2">
-                        <div class="best_box_in1 Internet">
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Internet_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 외국도서 -->
-                    <div class="best_box_ins Foreign_box_ins3">
-                        <div class="best_box_in1 Foreign">
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                            <div class="Foreign_box best_box">
-                                <div class="best_box-left"></div>
-                                <div class="best_box-right"></div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- 푸터  //////////////// -->
@@ -1016,5 +736,7 @@
             </div>
         </div>
     </footer>
+
+
 </body>
 </html>
