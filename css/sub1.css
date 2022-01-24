@@ -32,3 +32,66 @@
     .sub_purchase{margin: 10px 0;font-size: 14px;}
     .sub_purchase img{width: 15px;margin-right: 5px;}
     .sub_purchase a{margin-right: 15px;}
+
+
+    #maininformation{width: 90%;margin: 0 auto;}
+    .maininformation_button{border: solid 1px rgb(228, 228, 228); border-style: none none solid none;height: 100px;}
+    .maininformation_button-box{width: 300px;height: 100%; margin: 0 auto;display: flex; flex-direction: row;justify-content: space-between;}
+    .maininformation_button-box a{width: 40%;}
+    .maininformation_button-box .click{color: #62ab00;border-bottom: #62ab00 2px solid;}
+    .maininformation_button-box span{width: 100%;display: block;text-align: center;height: 100%;line-height: 100px;font-size: 19px; font-weight: bold;}
+    .subtotal,.author,.Contents{padding: 50px 0;border: 1px solid rgb(228, 228, 228); border-style: none none solid none;}
+
+    #review{width: 90%;margin: 0 auto;}
+    .review_box{width: 100%;height: 248px; display: flex;flex-direction: row;justify-content: space-between;
+    border-bottom: 1px solid rgb(228, 228, 228); padding: 30px 0;}
+    .review_box-chart{border: 1px solid rgb(228, 228, 228);border-style: none solid;
+    display: flex;flex-wrap: wrap;align-content: space-between;padding: 0 30px;}
+        .review_box-chart .chart_box{width: 100%;height: 15%;
+        display: flex;flex-direction: row;justify-content: space-between;line-height: 30px;}
+        .chart_box p{width: 15%;}
+        .chart_box p:nth-of-type(1){color: #777;}
+        .chart_box p:nth-of-type(2){color: #62ab00;text-align: right;}
+        .chart_ba{width: 70%;height: 100%;background-color: rgb(228, 228, 228);border-radius: 20px;}
+        .chart_ba span{display: inline-block;height: 100%; background-color: #62ab00;
+        border-radius: 20px;}
+        .chart_box:nth-of-type(1) span{width: 90%;}
+        .chart_box:nth-of-type(2) span{width: 15%;}
+        .chart_box:nth-of-type(3) span{width: 15%;}
+        .chart_box:nth-of-type(4) span{width: 15%;}
+        .chart_box:nth-of-type(5) span{width: 15%;}
+    .review_box-grade{ text-align: center; }
+    .review_box-grade h2{ font-size: 45px; }
+    .review_box-grade h3{ font-size: 25px; }
+    .review_box-grade img{width: 30px; margin: 10px 0 ;}
+    .review_box-grade p{font-size: 20px;}
+
+    .review_box-text{font-weight: bold;display: flex;flex-wrap: wrap;align-content: center;
+    padding: 0 30px;}
+        .review_box-text div{width: 100%;display: flex;flex-direction: row;justify-content: space-between;
+        margin: 4px 0;font-size: 16px;}
+        .review_box-text div div{width: 50%; display:block;}
+        .review_box-text div div span{margin-right: 7px;color: #62ab00;}
+        .review_box-text div div:nth-of-type(2){color: #777;text-align: right;}
+    .review_box-grade,.review_box-chart,.review_box-text{width: 33.333%;height: 100%;}
+
+
+    /* 고객리뷰 */
+    .customer{width:100%;display: flex;flex-direction: row;justify-content: space-between;
+    padding: 30px 0;border-bottom: rgb(228, 228, 228) 1px solid;}
+    .customer_photo{width: 10%;padding: 0 15px;}
+    .customer_photo img{width: 100%;}
+    .customer_Contents{width: 90%;}
+        /* 고객 아이디 */
+    .customer_totle{height: 65px;line-height:65px;font-size: 20px;}
+        /* 별사진 */
+    .customer_star{margin:0 0 20px 0;}
+    .customer_star img{width: 20px;}
+
+/* 관련제품 */
+#Related_products{}
+    .maininformation_button{border: solid 1px rgb(228, 228, 228); border-style: none none solid none;height: 100px;}
+    .maininformation_button-box{width: 300px;height: 100%; margin: 0 auto;display: flex; flex-direction: row;justify-content: space-between;}
+    .maininformation_button-box a{width: 40%;}
+    .maininformation_button-box .click{color: #62ab00;border-bottom: #62ab00 2px solid;}
+    .maininformation_button-box span{width: 100%;display: block;text-align: center;height: 100%;line-height: 100px;font-size: 19px; font-weight: bold;}
